@@ -1,0 +1,109 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+private:
+    string name;
+    int accountNumber;
+    double balance;
+
+public:
+    // Constructor
+    BankAccount(string n, int accNo, double bal)
+    {
+        name = n;
+        accountNumber = accNo;
+        balance = bal;
+    }
+
+    void deposit(double amount)
+    {
+        balance += amount;
+        cout << "✅Deposit successful. New Balance: " << balance << endl;
+    }
+
+    void withdraw(double amount)
+   {
+        if (amount > balance)
+          {
+            cout << "❌ Insufficient balance!" << endl;
+          } 
+       else
+          {
+            balance -= amount;
+            cout << "✅ Withdrawal successful. New Balance: " << balance << endl;
+          }
+   }
+
+    void display() 
+   {
+        cout << "📌 Account Holder: " << name << endl;
+        cout << "📌 Account Number: " << accountNumber << endl;
+        cout << "📌 Balance: " << balance << endl;
+    }
+};
+
+int main() {
+    string name;
+    int accNo;
+    double initialBalance;
+
+    cout << "🏦 Welcome to SmartBank!" << endl;
+    cout << "Enter your name: ";
+    getline(cin, name);
+    cout << "Enter Account Number: ";
+    cin >> accNo;
+    cout << "Enter Initial Balance: ";
+    cin >> initialBalance;
+
+    BankAccount user(name, accNo, initialBalance);   //this will go to constructor
+
+    int choice;
+    do 
+        {
+        cout << "\n------ MENU ------\n" << endl;
+        cout << "1. Deposit" << endl;
+        cout << "2. Withdraw" << endl;
+        cout << "3. Check Balance" << endl;
+        cout << "4. Display Account Details" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1)
+        {
+            double amt;
+            cout << "Enter deposit amount: ";
+            cin >> amt;
+            user.deposit(amt);  
+        } 
+       else if (choice == 2)
+        {
+            double amt;
+            cout << "Enter withdrawal amount: ";
+            cin >> amt;
+            user.withdraw(amt);
+        } 
+       else if (choice == 3)
+        {
+            cout << "Your balance is: " << initialBalance << endl;
+        } 
+       else if (choice == 4) 
+        {
+            user.display();
+        } 
+       else if (choice == 5)
+        {
+            cout << "Thank you for using SmartBank!" << endl;
+        } 
+      else
+        {
+            cout << "❌ Invalid choice!" << endl;
+        }
+    } 
+
+ while (choice != 5);
+
+ return 0;
+}
