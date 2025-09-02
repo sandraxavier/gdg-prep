@@ -16,7 +16,10 @@ public:
         accountNumber = accNo;
         balance = bal;
     }
-
+   double getBalance() 
+    {
+        return balance;
+    }
     void deposit(double amount)
     {
         balance += amount;
@@ -44,7 +47,8 @@ public:
     }
 };
 
-int main() {
+int main() 
+{
     string name;
     int accNo;
     double initialBalance;
@@ -57,7 +61,7 @@ int main() {
     cout << "Enter Initial Balance: ";
     cin >> initialBalance;
 
-    BankAccount user(name, accNo, initialBalance);   //this will go to constructor
+    BankAccount user(name, accNo, initialBalance);//this will go to constructor
 
     int choice;
     do 
@@ -87,7 +91,7 @@ int main() {
         } 
        else if (choice == 3)
         {
-            cout << "Your balance is: " << initialBalance << endl;
+            cout << "Your balance is: " << user.getBalance()  << endl;
         } 
        else if (choice == 4) 
         {
